@@ -8,3 +8,18 @@ export default function Home() {
     </main>
   )
 }
+import { useEffect } from 'react';
+
+function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    const mockLogin = () => {
+      localStorage.setItem('user', JSON.stringify({ name: 'Test User', role: 'admin' }));
+      window.location.href = '/dashboard'; // Anpassa denna URL till din sidas struktur
+    };
+    mockLogin();
+  }, []);
+
+  return <Component {...pageProps} />;
+}
+
+export default MyApp;
